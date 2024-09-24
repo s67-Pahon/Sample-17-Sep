@@ -12,7 +12,7 @@ void setup() {
     int w = width / cols;
     int h = height / rows;
 
-    update(grid, -1);
+    update(grid, 0);
     int i = 0;
     while (i < rows) {
 
@@ -20,7 +20,9 @@ void setup() {
         while (j < cols) {
 
             draw_lines(10 + j * w, 10 + i * h, grid[i][j]);
-            println(i, j, grid[i][j]);
+            
+            draw_grid_boundary(10 + j * w, 10 + i * h, w, h);
+           
             j++;
         }
 
@@ -50,4 +52,11 @@ void draw_lines(int x, int y, int n) {
         line(x + i * 20, y, x + i * 20, y + 40);
         i++;
     }
+}
+
+// Function to draw a rectangle for the grid boundary
+void draw_grid_boundary(int x, int y, int w, int h) {
+    noFill();
+    stroke(0);
+    rect(x, y, w, h); // Draws the rectangle grid boundary
 }
